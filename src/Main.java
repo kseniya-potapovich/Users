@@ -1,21 +1,35 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException {
-        User user1 = new User(1, new Computer("Asus"));
-        User user2 = (User) user1.clone();
+        Scanner scanner = new Scanner(System.in);
+        int ID;
+        int idClone;
+        User userClone;
+        System.out.println("Input id ");
+        ID = scanner.nextInt();
+        System.out.println("Which method to execute? " +
+                "\nclone() -> 1" +
+                "\ncloneGlobal() -> 2");
+        idClone = scanner.nextInt();
 
-        System.out.println(user1);
-        System.out.println(user2);
+        User[] users = new User[3];
+        users[0] = new User(0, new Computer("Asus"));
+        users[1] = new User(1, new Computer("Mac"));
+        users[2] = new User(2, new Computer("Hp"));
 
-        user2.getComputer().setModel("Mac");
+        if (idClone == 1) {
+            userClone = (User) users[ID].clone();
+        } else {
+            userClone = (User) users[ID].cloneGlobal();
+        }
 
-        System.out.println(user1);
-        System.out.println(user2);
-
-        User user3 = (User) user2.cloneGlobal();
-        user3.getComputer().setModel("Hp");
-
-        System.out.println(user1);
-        System.out.println(user2);
-        System.out.println(user3);
+        System.out.println("Users[ID]: " + users[ID]);
+        System.out.println("USERClone: " + userClone);
+        System.out.println("------------------");
+        userClone.getComputer().setModel("Dell");
+        userClone.setId(3);
+        System.out.println("Users[ID]: " + users[ID]);
+        System.out.println("USERClone: " + userClone);
     }
 }
