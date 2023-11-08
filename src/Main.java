@@ -31,5 +31,8 @@ public class Main {
         userClone.setId(3);
         System.out.println("Users[ID]: " + users[ID]);
         System.out.println("USERClone: " + userClone);
+
+        /*System.out.println(users[ID].hashCode());
+        System.out.println(userClone.hashCode());*/
     }
 }
